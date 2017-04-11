@@ -22,7 +22,7 @@ public class BibliotecaApp {
     public void start() {
         while(userIsQuitting == false) {
             showMenu();
-            String menuChoice = getMenuChoice();
+            String menuChoice = getUserInput();
             selectMenuChoice(menuChoice);
         }
     }
@@ -32,18 +32,20 @@ public class BibliotecaApp {
     }
 
     public void showMenu() {
-        System.out.println("Main Menu - Choose a number:\n1. List Books\n2. Exit");
+        System.out.println("Main Menu - Choose a number:\n1. List Books\n2. Checkout Book\n3. Exit");
     }
 
-    public String getMenuChoice() {
+    public String getUserInput() {
         Scanner sc = new Scanner(System.in);
-        return sc.next();
+        return sc.nextLine();
     }
 
     public void selectMenuChoice(String input) {
         if(input.equals("1")) {
             listBooks();
         } else if(input.equals("2")) {
+            checkout();
+        } else if(input.equals("3")) {
             userIsQuitting = true;
             System.out.println("Thank you for visiting The Bangalore Public Library. Goodbye.");
         } else {
@@ -51,9 +53,27 @@ public class BibliotecaApp {
         }
     }
 
+    public void checkout() {
+        System.out.println("Please provide the title of the book you'd like to checkout:");
+        String bookTitle = getUserInput();
+        removeBook(bookTitle);
+    }
+
+    public void removeBook(String bookTitle) {
+        for(Book book : bookList) {
+            if(book.getTitle().equals(bookTitle)) {
+                book.switchCheckedOutStatus();
+                System.out.println("Checkout successful - enjoy!");
+                break;
+            }
+        }
+    }
+
     public void listBooks() {
         for(Book book : bookList) {
-            System.out.println(book.getTitle() + " | " + book.getAuthor() + " | " + book.getYearPublished());
+            if(book.getCheckedOutStatus()) {
+                System.out.println(book.getTitle() + " | " + book.getAuthor() + " | " + book.getYearPublished());
+            }
         }
     }
  }

@@ -32,5 +32,9 @@ public class BookTest {
         assertEquals(true, book1.getCheckedOutStatus());
     }
 
-
+    @Test
+    public void switchCheckedOutStatusTest() {
+        book1.switchCheckedOutStatus();
+        assertEquals(false, book1.getCheckedOutStatus());
+    }
 }

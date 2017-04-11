@@ -31,4 +31,8 @@ public class Book {
     public boolean getCheckedOutStatus() {
         return isCheckedOut;
     }
+
+    public void switchCheckedOutStatus() {
+        isCheckedOut ^= true;
+    }
 }

@@ -4,6 +4,9 @@ import org.junit.Test;
 import org.junit.Before;
 import static org.junit.Assert.assertEquals;
 import java.io.*;
+import static org.junit.Assert.assertThat;
+import static org.hamcrest.CoreMatchers.containsString;
+import static org.hamcrest.CoreMatchers.not;
 
 public class BibliotecaAppTest {
 
@@ -20,14 +23,14 @@ public class BibliotecaAppTest {
         app.welcomeMessage();
         app.showMenu();
         String welcome = "Welcome to The Bangalore Public Library\nMain Menu - Choose a number:\n1. List Books\n" +
-                "2. Exit\n";
+                "2. Checkout Book\n3. Exit\n";
         assertEquals(welcome, myOut.toString());
     }
 
     @Test
     public void showMenuTest() {
         app.showMenu();
-        String welcome = "Main Menu - Choose a number:\n1. List Books\n2. Exit\n";
+        String welcome = "Main Menu - Choose a number:\n1. List Books\n2. Checkout Book\n3. Exit\n";
         assertEquals(welcome, myOut.toString());
     }
 
@@ -36,7 +39,7 @@ public class BibliotecaAppTest {
         String input = "1";
         InputStream myOut = new ByteArrayInputStream(input.getBytes());
         System.setIn(myOut);
-        assertEquals("1", app.getMenuChoice());
+        assertEquals("1", app.getUserInput());
     }
 
     @Test
@@ -65,9 +68,36 @@ public class BibliotecaAppTest {
     @Test
     public void selectMenuChoice2Test() {
         String input = "2";
+        String checkoutMessage = "Please provide the title of the book you'd like to checkout:\n";
+        System.setIn(new ByteArrayInputStream(input.getBytes()));
+        app.selectMenuChoice(input);
+        assertEquals(checkoutMessage, myOut.toString());
+    }
+
+    @Test
+    public void selectMenuChoice3Test() {
+        String input = "3";
         String exitMessage = "Thank you for visiting The Bangalore Public Library. Goodbye.\n";
         app.selectMenuChoice(input);
         assertEquals(exitMessage, myOut.toString());
+    }
+
+    @Test
+    public void checkoutRemovesBookFromListTest() {
+        String input = "Zero To One";
+        System.setIn(new ByteArrayInputStream(input.getBytes()));
+        app.checkout();
+        app.listBooks();
+        assertThat(myOut.toString(), not(containsString(input)));
+    }
+
+    @Test
+    public void successfulCheckoutMessageTest() {
+        String input = "Zero To One";
+        System.setIn(new ByteArrayInputStream(input.getBytes()));
+        app.checkout();
+        String successfulCheckoutMessage = "Checkout successful - enjoy!";
+        assertThat(myOut.toString(), containsString(successfulCheckoutMessage));
     }
 
 // Commented out until I can find a more appropriate assertion
