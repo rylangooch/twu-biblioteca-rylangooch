@@ -47,6 +47,14 @@ public class BibliotecaAppTest {
     }
 
     @Test
+    public void selectInvalidMenuOptionTest() {
+        String input = "List books";
+        String errorMessage = "Select a valid option!\n";
+        app.selectMenuChoice(input);
+        assertEquals(errorMessage, myOut.toString());
+    }
+
+    @Test
     public void listBooksTest() {
         app.listBooks();
         String booksList = "Zero To One | Peter Thiel | 2014\nMastery | Robert Greene | 2012\n";

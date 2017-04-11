@@ -16,6 +16,8 @@ public class BibliotecaApp {
         BibliotecaApp app = new BibliotecaApp();
         app.welcomeMessage();
         app.showMenu();
+        String menuChoice = app.getMenuChoice();
+        app.selectMenuChoice(menuChoice);
     }
 
     public void welcomeMessage() {
@@ -34,6 +36,8 @@ public class BibliotecaApp {
     public void selectMenuChoice(String input) {
         if(input.equals("1")) {
             listBooks();
+        } else {
+            System.out.println("Select a valid option!");
         }
     }
 
