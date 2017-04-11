@@ -7,11 +7,13 @@ public class Book {
     String title;
     String author;
     String yearPublished;
+    boolean isCheckedOut;
 
     public Book(String name, String writer, String year) {
         title = name;
         author = writer;
         yearPublished = year;
+        isCheckedOut = true;
     }
 
     public String getTitle() {
@@ -24,5 +26,9 @@ public class Book {
 
     public String getYearPublished() {
         return yearPublished;
+    }
+
+    public boolean getCheckedOutStatus() {
+        return isCheckedOut;
     }
 }

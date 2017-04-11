@@ -13,17 +13,24 @@ public class BookTest {
     Book book1 = new Book("Zero To One", "Peter Thiel", "2014");
 
     @Test
-    public void hasATitle() {
+    public void hasATitleTest() {
         assertEquals("Zero To One", book1.getTitle());
     }
 
     @Test
-    public void hasAnAuthor() {
+    public void hasAnAuthorTest() {
         assertEquals("Peter Thiel", book1.getAuthor());
     }
 
     @Test
-    public void hasAYearPublished() {
+    public void hasAYearPublishedTest() {
         assertEquals("2014", book1.getYearPublished());
     }
+
+    @Test
+    public void hasACheckedOutStatusTest() {
+        assertEquals(true, book1.getCheckedOutStatus());
+    }
+
+
 }
