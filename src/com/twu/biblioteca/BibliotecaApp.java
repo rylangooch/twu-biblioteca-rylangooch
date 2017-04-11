@@ -5,8 +5,8 @@ import java.util.Scanner;
 
 public class BibliotecaApp {
 
-    ArrayList<Book> bookList = new ArrayList<Book>();
-    boolean userIsQuitting = false;
+    private ArrayList<Book> bookList = new ArrayList<Book>();
+    private boolean userIsQuitting = false;
 
     public BibliotecaApp() {
        bookList.add(new Book("Zero To One", "Peter Thiel", "2014"));
@@ -19,7 +19,7 @@ public class BibliotecaApp {
         app.start();
     }
 
-    public void start() {
+    private void start() {
         while(userIsQuitting == false) {
             showMenu();
             String menuChoice = getUserInput();
@@ -59,7 +59,7 @@ public class BibliotecaApp {
         removeBook(bookTitle);
     }
 
-    public void removeBook(String bookTitle) {
+    private void removeBook(String bookTitle) {
         for(Book book : bookList) {
             if(book.getTitle().equals(bookTitle)) {
                 book.switchCheckedOutStatus();
