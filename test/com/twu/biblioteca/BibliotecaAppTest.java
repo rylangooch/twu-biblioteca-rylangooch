@@ -17,10 +17,17 @@ public class BibliotecaAppTest {
     }
 
     @Test
-    public void helloWorld() {
+    public void welcomeMessageTest() {
         app.welcomeMessage();
-        String welcome = "Welcome to Biblioteca";
+        String welcome = "Welcome to Biblioteca\n";
         assertEquals(welcome, myOut.toString());
+    }
+
+    @Test
+    public void listBooksTest() {
+        app.listBooks();
+        String booksList = "Zero To One\nMastery\n";
+        assertEquals(booksList, myOut.toString());
     }
 
 }
