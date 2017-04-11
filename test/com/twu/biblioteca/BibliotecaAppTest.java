@@ -19,14 +19,15 @@ public class BibliotecaAppTest {
     public void welcomeMessageTest() {
         app.welcomeMessage();
         app.showMenu();
-        String welcome = "Welcome to Biblioteca\nMain Menu - Choose a number:\n1. List Books\n";
+        String welcome = "Welcome to The Bangalore Public Library\nMain Menu - Choose a number:\n1. List Books\n" +
+                "2. Exit\n";
         assertEquals(welcome, myOut.toString());
     }
 
     @Test
     public void showMenuTest() {
         app.showMenu();
-        String welcome = "Main Menu - Choose a number:\n1. List Books\n";
+        String welcome = "Main Menu - Choose a number:\n1. List Books\n2. Exit\n";
         assertEquals(welcome, myOut.toString());
     }
 
@@ -39,7 +40,7 @@ public class BibliotecaAppTest {
     }
 
     @Test
-    public void selectMenuChoiceTest() {
+    public void selectMenuChoice1Test() {
         String input = "1";
         String booksList = "Zero To One | Peter Thiel | 2014\nMastery | Robert Greene | 2012\n";
         app.selectMenuChoice(input);
@@ -60,5 +61,25 @@ public class BibliotecaAppTest {
         String booksList = "Zero To One | Peter Thiel | 2014\nMastery | Robert Greene | 2012\n";
         assertEquals(booksList, myOut.toString());
     }
+
+    @Test
+    public void selectMenuChoice2Test() {
+        String input = "2";
+        String exitMessage = "Thank you for visiting The Bangalore Public Library. Goodbye.\n";
+        app.selectMenuChoice(input);
+        assertEquals(exitMessage, myOut.toString());
+    }
+
+// Commented out until I can find a more appropriate assertion
+// @Test
+//    public void keepChoosingUntilQuitTest() {
+//        String input1 = "1";
+//        String input2 = "2";
+//        String exitMessage = "Thank you for visiting The Bangalore Public Library. Goodbye.\n";
+//        app.selectMenuChoice(input1);
+//        app.selectMenuChoice(input1);
+//        app.selectMenuChoice(input2);
+//        assertEquals(exitMessage, myOut.toString());
+//    }
 
 }
