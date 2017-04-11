@@ -26,7 +26,7 @@ public class BibliotecaAppTest {
     @Test
     public void listBooksTest() {
         app.listBooks();
-        String booksList = "Zero To One\nMastery\n";
+        String booksList = "Zero To One | Peter Thiel | 2014\nMastery | Robert Greene | 2012\n";
         assertEquals(booksList, myOut.toString());
     }
 

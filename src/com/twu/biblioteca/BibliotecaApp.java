@@ -9,8 +9,8 @@ public class BibliotecaApp {
     ArrayList<Book> bookList = new ArrayList<Book>();
 
     public BibliotecaApp() {
-       bookList.add(new Book("Zero To One"));
-       bookList.add(new Book("Mastery"));
+       bookList.add(new Book("Zero To One", "Peter Thiel", "2014"));
+       bookList.add(new Book("Mastery", "Robert Greene", "2012"));
     }
 
     public static void main(String[] args) {
@@ -25,7 +25,7 @@ public class BibliotecaApp {
 
     public void listBooks() {
         for(Book book : bookList) {
-            System.out.println(book.getTitle());
+            System.out.println(book.getTitle() + " | " + book.getAuthor() + " | " + book.getYearPublished());
         }
     }
  }
