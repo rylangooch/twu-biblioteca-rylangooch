@@ -1,8 +1,7 @@
 package com.twu.biblioteca;
 
-import sun.jvm.hotspot.HelloWorld;
-
 import java.util.ArrayList;
+import java.util.Scanner;
 
 public class BibliotecaApp {
 
@@ -25,6 +24,17 @@ public class BibliotecaApp {
 
     public void showMenu() {
         System.out.println("Main Menu - Choose a number:\n1. List Books");
+    }
+
+    public String getMenuChoice() {
+        Scanner sc = new Scanner(System.in);
+        return sc.next();
+    }
+
+    public void selectMenuChoice(String input) {
+        if(input.equals("1")) {
+            listBooks();
+        }
     }
 
     public void listBooks() {
