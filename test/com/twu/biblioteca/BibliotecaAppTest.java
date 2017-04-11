@@ -19,7 +19,8 @@ public class BibliotecaAppTest {
     @Test
     public void welcomeMessageTest() {
         app.welcomeMessage();
-        String welcome = "Welcome to Biblioteca\n";
+        app.showMenu();
+        String welcome = "Welcome to Biblioteca\nMain Menu - Choose a number:\n1. List Books\n";
         assertEquals(welcome, myOut.toString());
     }
 

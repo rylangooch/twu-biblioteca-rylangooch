@@ -16,11 +16,15 @@ public class BibliotecaApp {
     public static void main(String[] args) {
         BibliotecaApp app = new BibliotecaApp();
         app.welcomeMessage();
-        app.listBooks();
+        app.showMenu();
     }
 
     public void welcomeMessage() {
         System.out.println("Welcome to Biblioteca");
+    }
+
+    public void showMenu() {
+        System.out.println("Main Menu - Choose a number:\n1. List Books");
     }
 
     public void listBooks() {
