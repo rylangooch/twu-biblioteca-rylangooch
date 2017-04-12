@@ -33,7 +33,9 @@ public class Librarian {
 
     boolean checkForBook(String title) {
         for(Book book : bookList) {
-            if(book.getTitle().equals(title)) { return true; }
+            if(book.getTitle().equals(title) && book.getCheckedOutStatus()) {
+                return true;
+            }
         }
         return false;
     }

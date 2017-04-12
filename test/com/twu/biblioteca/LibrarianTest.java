@@ -30,11 +30,20 @@ public class LibrarianTest {
     }
 
     @Test
-    public void checkoutRemovesBookFromListTest() {
+    public void checkoutRemovesBookFromPrintedListTest() {
         String input = "Mastery";
         lib.checkout(input);
         lib.listBooks();
         assertThat(myOut.toString(), not(containsString(input)));
+    }
+
+    @Test
+    public void cannotCheckoutBookTwiceTest() {
+        String input = "Mastery";
+        lib.checkout(input);
+        lib.checkout(input);
+        String unsuccessfulCheckoutMessage = "That book is not available.";
+        assertThat(myOut.toString(), containsString(unsuccessfulCheckoutMessage));
     }
 
     @Test
@@ -49,7 +58,7 @@ public class LibrarianTest {
     public void unsuccessfulCheckoutMessageTest() {
         String input = "Vagabonding";
         lib.checkout(input);
-        String successfulCheckoutMessage = "That book is not available.";
-        assertThat(myOut.toString(), containsString(successfulCheckoutMessage));
+        String unsuccessfulCheckoutMessage = "That book is not available.";
+        assertThat(myOut.toString(), containsString(unsuccessfulCheckoutMessage));
     }
 }
