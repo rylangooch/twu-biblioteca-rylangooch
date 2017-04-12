@@ -24,57 +24,38 @@ public class Librarian {
     }
 
     void checkout(String bookTitle) {
-            if(checkForBook(bookTitle)) {
-                removeBook(bookTitle);
+            if(isProcessable(bookTitle, true)) {
+                processBook(bookTitle, true);
+                System.out.println("Thank you! Enjoy the book");
             } else {
                 System.out.println("That book is not available.");
             }
         }
 
-    boolean checkForBook(String title) {
-        for(Book book : bookList) {
-            if(book.getTitle().equals(title) && book.getCheckedOutStatus()) {
-                return true;
-            }
-        }
-        return false;
-    }
-
-    void removeBook(String bookName) {
-        for(Book book : bookList) {
-            if(book.getTitle().equals(bookName)) {
-                book.switchCheckedOutStatus();
-                System.out.println("Thank you! Enjoy the book");
-                break;
-            }
-        }
-    }
-
     void returnBook(String bookTitle) {
-        if(checkForReturn(bookTitle)) {
-            addBook(bookTitle);
+        if(isProcessable(bookTitle, false)) {
+            processBook(bookTitle, false);
+            System.out.println("Thank you for returning the book.");
         } else {
             System.out.println("That is not a valid book to return.");
         }
     }
 
-    boolean checkForReturn(String title) {
+    private boolean isProcessable(String title, boolean isForCheckout) {
         for(Book book : bookList) {
-            if(book.getTitle().equals(title) && !book.getCheckedOutStatus()) {
+            if(book.getTitle().equals(title) && (book.getCheckedOutStatus() == isForCheckout)) {
                 return true;
             }
         }
         return false;
     }
 
-    void addBook(String bookName) {
+    private void processBook(String bookName, boolean isForCheckout) {
         for(Book book : bookList) {
-            if(book.getTitle().equals(bookName) && !book.getCheckedOutStatus()) {
+            if(book.getTitle().equals(bookName) && (book.getCheckedOutStatus() == isForCheckout)) {
                 book.switchCheckedOutStatus();
-                System.out.println("Thank you for returning the book.");
                 break;
             }
         }
     }
-
 }
