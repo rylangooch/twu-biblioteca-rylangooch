@@ -8,7 +8,7 @@ public class BibliotecaApp {
     private ArrayList<Book> bookList = new ArrayList<Book>();
     private boolean userIsQuitting = false;
 
-    public BibliotecaApp() {
+    BibliotecaApp() {
        bookList.add(new Book("Zero To One", "Peter Thiel", "2014"));
        bookList.add(new Book("Mastery", "Robert Greene", "2012"));
     }
@@ -19,28 +19,28 @@ public class BibliotecaApp {
         app.start();
     }
 
-    private void start() {
-        while(userIsQuitting == false) {
+    void start() {
+        while(!userIsQuitting) {
             showMenu();
             String menuChoice = getUserInput();
             selectMenuChoice(menuChoice);
         }
     }
 
-    public void welcomeMessage() {
+    void welcomeMessage() {
         System.out.println("Welcome to The Bangalore Public Library");
     }
 
-    public void showMenu() {
+    void showMenu() {
         System.out.println("Main Menu - Choose a number:\n1. List Books\n2. Checkout Book\n3. Exit");
     }
 
-    public String getUserInput() {
+    String getUserInput() {
         Scanner sc = new Scanner(System.in);
         return sc.nextLine();
     }
 
-    public void selectMenuChoice(String input) {
+    void selectMenuChoice(String input) {
         if(input.equals("1")) {
             listBooks();
         } else if(input.equals("2")) {
@@ -53,7 +53,7 @@ public class BibliotecaApp {
         }
     }
 
-    public void checkout() {
+    void checkout() {
         System.out.println("Please provide the title of the book you'd like to checkout:");
         String bookTitle = getUserInput();
         removeBook(bookTitle);
@@ -69,7 +69,7 @@ public class BibliotecaApp {
         }
     }
 
-    public void listBooks() {
+    void listBooks() {
         for(Book book : bookList) {
             if(book.getCheckedOutStatus()) {
                 System.out.println(book.getTitle() + " | " + book.getAuthor() + " | " + book.getYearPublished());

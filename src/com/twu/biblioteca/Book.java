@@ -9,30 +9,30 @@ public class Book {
     String yearPublished;
     boolean isCheckedOut;
 
-    public Book(String name, String writer, String year) {
+    Book(String name, String writer, String year) {
         title = name;
         author = writer;
         yearPublished = year;
         isCheckedOut = true;
     }
 
-    public String getTitle() {
+    String getTitle() {
         return title;
     }
 
-    public String getAuthor() {
+    String getAuthor() {
         return author;
     }
 
-    public String getYearPublished() {
+    String getYearPublished() {
         return yearPublished;
     }
 
-    public boolean getCheckedOutStatus() {
+    boolean getCheckedOutStatus() {
         return isCheckedOut;
     }
 
-    public void switchCheckedOutStatus() {
+    void switchCheckedOutStatus() {
         isCheckedOut ^= true;
     }
 }
