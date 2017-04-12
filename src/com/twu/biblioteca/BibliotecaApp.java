@@ -1,20 +1,23 @@
 package com.twu.biblioteca;
 
-import java.util.ArrayList;
 import java.util.Scanner;
 
 public class BibliotecaApp {
 
-    private ArrayList<Book> bookList = new ArrayList<Book>();
     private boolean userIsQuitting = false;
+    private Librarian lib;
+
+    BibliotecaApp(Librarian bookManager) {
+        lib = bookManager;
+    }
 
     BibliotecaApp() {
-       bookList.add(new Book("Zero To One", "Peter Thiel", "2014"));
-       bookList.add(new Book("Mastery", "Robert Greene", "2012"));
+        lib = new Librarian();
     }
 
     public static void main(String[] args) {
-        BibliotecaApp app = new BibliotecaApp();
+        Librarian lib = new Librarian();
+        BibliotecaApp app = new BibliotecaApp(lib);
         app.welcomeMessage();
         app.start();
     }
@@ -42,38 +45,16 @@ public class BibliotecaApp {
 
     void selectMenuChoice(String input) {
         if(input.equals("1")) {
-            listBooks();
+            lib.listBooks();
         } else if(input.equals("2")) {
-            checkout();
+            System.out.println("Please provide the title of the book you'd like to checkout:");
+            String bookTitle = getUserInput();
+            lib.checkout(bookTitle);
         } else if(input.equals("3")) {
             userIsQuitting = true;
             System.out.println("Thank you for visiting The Bangalore Public Library. Goodbye.");
         } else {
             System.out.println("Select a valid option!");
-        }
-    }
-
-    void checkout() {
-        System.out.println("Please provide the title of the book you'd like to checkout:");
-        String bookTitle = getUserInput();
-        removeBook(bookTitle);
-    }
-
-    private void removeBook(String bookTitle) {
-        for(Book book : bookList) {
-            if(book.getTitle().equals(bookTitle)) {
-                book.switchCheckedOutStatus();
-                System.out.println("Checkout successful - enjoy!");
-                break;
-            }
-        }
-    }
-
-    void listBooks() {
-        for(Book book : bookList) {
-            if(book.getCheckedOutStatus()) {
-                System.out.println(book.getTitle() + " | " + book.getAuthor() + " | " + book.getYearPublished());
-            }
         }
     }
  }

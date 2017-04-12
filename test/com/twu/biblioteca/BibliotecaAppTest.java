@@ -4,9 +4,6 @@ import org.junit.Test;
 import org.junit.Before;
 import static org.junit.Assert.assertEquals;
 import java.io.*;
-import static org.junit.Assert.assertThat;
-import static org.hamcrest.CoreMatchers.containsString;
-import static org.hamcrest.CoreMatchers.not;
 
 public class BibliotecaAppTest {
 
@@ -59,13 +56,6 @@ public class BibliotecaAppTest {
     }
 
     @Test
-    public void listBooksTest() {
-        app.listBooks();
-        String booksList = "Zero To One | Peter Thiel | 2014\nMastery | Robert Greene | 2012\n";
-        assertEquals(booksList, myOut.toString());
-    }
-
-    @Test
     public void selectMenuChoice2Test() {
         String input = "2";
         String checkoutMessage = "Please provide the title of the book you'd like to checkout:\n";
@@ -81,35 +71,4 @@ public class BibliotecaAppTest {
         app.selectMenuChoice(input);
         assertEquals(exitMessage, myOut.toString());
     }
-
-    @Test
-    public void checkoutRemovesBookFromListTest() {
-        String input = "Zero To One";
-        System.setIn(new ByteArrayInputStream(input.getBytes()));
-        app.checkout();
-        app.listBooks();
-        assertThat(myOut.toString(), not(containsString(input)));
-    }
-
-    @Test
-    public void successfulCheckoutMessageTest() {
-        String input = "Zero To One";
-        System.setIn(new ByteArrayInputStream(input.getBytes()));
-        app.checkout();
-        String successfulCheckoutMessage = "Checkout successful - enjoy!";
-        assertThat(myOut.toString(), containsString(successfulCheckoutMessage));
-    }
-
-// Commented out until I can find a more appropriate assertion
-// @Test
-//    public void keepChoosingUntilQuitTest() {
-//        String input1 = "1";
-//        String input2 = "2";
-//        String exitMessage = "Thank you for visiting The Bangalore Public Library. Goodbye.\n";
-//        app.selectMenuChoice(input1);
-//        app.selectMenuChoice(input1);
-//        app.selectMenuChoice(input2);
-//        assertEquals(exitMessage, myOut.toString());
-//    }
-
 }
