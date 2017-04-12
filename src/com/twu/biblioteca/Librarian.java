@@ -50,4 +50,31 @@ public class Librarian {
         }
     }
 
+    void returnBook(String bookTitle) {
+        if(checkForReturn(bookTitle)) {
+            addBook(bookTitle);
+        } else {
+            System.out.println("That is not a valid book to return.");
+        }
+    }
+
+    boolean checkForReturn(String title) {
+        for(Book book : bookList) {
+            if(book.getTitle().equals(title) && !book.getCheckedOutStatus()) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    void addBook(String bookName) {
+        for(Book book : bookList) {
+            if(book.getTitle().equals(bookName) && !book.getCheckedOutStatus()) {
+                book.switchCheckedOutStatus();
+                System.out.println("Thank you for returning the book.");
+                break;
+            }
+        }
+    }
+
 }

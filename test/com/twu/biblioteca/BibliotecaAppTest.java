@@ -22,14 +22,15 @@ public class BibliotecaAppTest {
         app.welcomeMessage();
         app.showMenu();
         String welcome = "Welcome to The Bangalore Public Library\nMain Menu - Choose a number:\n1. List Books\n" +
-                "2. Checkout Book\n3. Exit\n";
+                "2. Checkout Book\n3. Return Book\n4. Exit\n";
         assertEquals(welcome, myOut.toString());
     }
 
     @Test
     public void showMenuTest() {
         app.showMenu();
-        String welcome = "Main Menu - Choose a number:\n1. List Books\n2. Checkout Book\n3. Exit\n";
+        String welcome = "Main Menu - Choose a number:\n1. List Books\n2. Checkout Book\n3. Return Book\n" +
+                "4. Exit\n";
         assertEquals(welcome, myOut.toString());
     }
 
@@ -69,6 +70,15 @@ public class BibliotecaAppTest {
     @Test
     public void selectMenuChoice3Test() {
         String input = "3";
+        String exitMessage = "Please provide the title of the book you'd like to return:\n";
+        System.setIn(new ByteArrayInputStream(input.getBytes()));
+        app.selectMenuChoice(input);
+        assertThat(myOut.toString(), containsString(exitMessage));
+    }
+
+    @Test
+    public void selectMenuChoice4Test() {
+        String input = "4";
         String exitMessage = "Thank you for visiting The Bangalore Public Library. Goodbye.\n";
         app.selectMenuChoice(input);
         assertEquals(exitMessage, myOut.toString());

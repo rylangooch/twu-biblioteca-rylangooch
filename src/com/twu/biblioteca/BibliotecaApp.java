@@ -35,7 +35,8 @@ public class BibliotecaApp {
     }
 
     void showMenu() {
-        System.out.println("Main Menu - Choose a number:\n1. List Books\n2. Checkout Book\n3. Exit");
+        System.out.println("Main Menu - Choose a number:\n1. List Books\n2. Checkout Book\n3. Return Book\n" +
+                "4. Exit");
     }
 
     String getUserInput() {
@@ -51,6 +52,10 @@ public class BibliotecaApp {
             String bookTitle = getUserInput();
             lib.checkout(bookTitle);
         } else if(input.equals("3")) {
+            System.out.println("Please provide the title of the book you'd like to return:");
+            String bookTitle = getUserInput();
+            lib.returnBook(bookTitle);
+        } else if(input.equals("4")) {
             userIsQuitting = true;
             System.out.println("Thank you for visiting The Bangalore Public Library. Goodbye.");
         } else {

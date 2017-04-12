@@ -38,7 +38,7 @@ public class LibrarianTest {
     }
 
     @Test
-    public void cannotCheckoutBookTwiceTest() {
+    public void cannotCheckoutBookTwiceInARowTest() {
         String input = "Mastery";
         lib.checkout(input);
         lib.checkout(input);
@@ -59,6 +59,41 @@ public class LibrarianTest {
         String input = "Vagabonding";
         lib.checkout(input);
         String unsuccessfulCheckoutMessage = "That book is not available.";
+        assertThat(myOut.toString(), containsString(unsuccessfulCheckoutMessage));
+    }
+
+    @Test
+    public void returnBookAddsBookToPrintedListTest() {
+        String input = "Mastery";
+        lib.checkout(input);
+        lib.returnBook(input);
+        lib.listBooks();
+        assertThat(myOut.toString(), containsString(input));
+    }
+
+    @Test
+    public void successfulReturnMessageTest() {
+        String input = "Zero To One";
+        lib.checkout(input);
+        lib.returnBook(input);
+        String successfulCheckoutMessage = "Thank you for returning the book.";
+        assertThat(myOut.toString(), containsString(successfulCheckoutMessage));
+    }
+
+    @Test
+    public void unsuccessfulReturnMessageTest() {
+        String input = "Vagabonding";
+        lib.returnBook(input);
+        String unsuccessfulCheckoutMessage = "That is not a valid book to return.";
+        assertThat(myOut.toString(), containsString(unsuccessfulCheckoutMessage));
+    }
+
+    public void cannotReturnBookTwiceInARowTest() {
+        String input = "Mastery";
+        lib.checkout(input);
+        lib.returnBook(input);
+        lib.returnBook(input);
+        String unsuccessfulCheckoutMessage = "That is not a valid book to return.";
         assertThat(myOut.toString(), containsString(unsuccessfulCheckoutMessage));
     }
 }
