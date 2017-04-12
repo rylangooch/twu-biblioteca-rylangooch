@@ -25,11 +25,7 @@ public class Librarian {
 
     void checkout(String bookTitle) {
             if(checkForBook(bookTitle)) {
-                for(Book book : bookList) {
-                    book.switchCheckedOutStatus();
-                    System.out.println("Thank you! Enjoy the book");
-                    break;
-                }
+                removeBook(bookTitle);
             } else {
                 System.out.println("That book is not available.");
             }
@@ -41,4 +37,15 @@ public class Librarian {
         }
         return false;
     }
+
+    void removeBook(String bookName) {
+        for(Book book : bookList) {
+            if(book.getTitle().equals(bookName)) {
+                book.switchCheckedOutStatus();
+                System.out.println("Thank you! Enjoy the book");
+                break;
+            }
+        }
+    }
+
 }

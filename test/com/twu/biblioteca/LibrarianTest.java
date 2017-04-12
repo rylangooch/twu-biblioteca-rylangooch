@@ -31,7 +31,7 @@ public class LibrarianTest {
 
     @Test
     public void checkoutRemovesBookFromListTest() {
-        String input = "Zero To One";
+        String input = "Mastery";
         lib.checkout(input);
         lib.listBooks();
         assertThat(myOut.toString(), not(containsString(input)));
