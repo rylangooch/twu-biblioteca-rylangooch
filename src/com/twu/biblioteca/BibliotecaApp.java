@@ -48,18 +48,30 @@ public class BibliotecaApp {
         if(input.equals("1")) {
             lib.listBooks();
         } else if(input.equals("2")) {
-            System.out.println("Please provide the title of the book you'd like to checkout:");
-            String bookTitle = getUserInput();
-            lib.checkout(bookTitle);
+            checkoutBook();
         } else if(input.equals("3")) {
-            System.out.println("Please provide the title of the book you'd like to return:");
-            String bookTitle = getUserInput();
-            lib.returnBook(bookTitle);
+            bookReturn();
         } else if(input.equals("4")) {
-            userIsQuitting = true;
-            System.out.println("Thank you for visiting The Bangalore Public Library. Goodbye.");
+            userExit();
         } else {
             System.out.println("Select a valid option!");
         }
+    }
+
+    private void checkoutBook() {
+        System.out.println("Please provide the title of the book you'd like to checkout:");
+        String bookTitle = getUserInput();
+        lib.checkout(bookTitle);
+    }
+
+    private void bookReturn() {
+        System.out.println("Please provide the title of the book you'd like to return:");
+        String bookTitle = getUserInput();
+        lib.returnBook(bookTitle);
+    }
+
+    private void userExit () {
+        userIsQuitting = true;
+        System.out.println("Thank you for visiting The Bangalore Public Library. Goodbye.");
     }
  }

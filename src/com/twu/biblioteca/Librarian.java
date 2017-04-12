@@ -41,9 +41,9 @@ public class Librarian {
         }
     }
 
-    private boolean isProcessable(String title, boolean isForCheckout) {
+    private boolean isProcessable(String bookTitle, boolean isForCheckout) {
         for(Book book : bookList) {
-            if(book.getTitle().equals(title) && (book.getCheckedOutStatus() == isForCheckout)) {
+            if(areTitlesMatching(book, bookTitle) && areCheckoutStatusesMatching(book, isForCheckout)) {
                 return true;
             }
         }
@@ -52,10 +52,18 @@ public class Librarian {
 
     private void processBook(String bookName, boolean isForCheckout) {
         for(Book book : bookList) {
-            if(book.getTitle().equals(bookName) && (book.getCheckedOutStatus() == isForCheckout)) {
+            if(areTitlesMatching(book, bookName) && areCheckoutStatusesMatching(book, isForCheckout)) {
                 book.switchCheckedOutStatus();
                 break;
             }
         }
+    }
+
+    private boolean areTitlesMatching(Book book, String title) {
+        return book.getTitle().equals(title);
+    }
+
+    private boolean areCheckoutStatusesMatching(Book book, boolean forCheckout) {
+        return book.getCheckedOutStatus() == forCheckout;
     }
 }
