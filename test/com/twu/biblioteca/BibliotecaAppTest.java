@@ -4,6 +4,8 @@ import org.junit.Test;
 import org.junit.Before;
 import static org.junit.Assert.assertEquals;
 import java.io.*;
+import static org.junit.Assert.assertThat;
+import static org.hamcrest.CoreMatchers.containsString;
 
 public class BibliotecaAppTest {
 
@@ -61,7 +63,7 @@ public class BibliotecaAppTest {
         String checkoutMessage = "Please provide the title of the book you'd like to checkout:\n";
         System.setIn(new ByteArrayInputStream(input.getBytes()));
         app.selectMenuChoice(input);
-        assertEquals(checkoutMessage, myOut.toString());
+        assertThat(myOut.toString(), containsString(checkoutMessage));
     }
 
     @Test

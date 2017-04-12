@@ -41,7 +41,15 @@ public class LibrarianTest {
     public void successfulCheckoutMessageTest() {
         String input = "Zero To One";
         lib.checkout(input);
-        String successfulCheckoutMessage = "Checkout successful - enjoy!";
+        String successfulCheckoutMessage = "Thank you! Enjoy the book";
+        assertThat(myOut.toString(), containsString(successfulCheckoutMessage));
+    }
+
+    @Test
+    public void unsuccessfulCheckoutMessageTest() {
+        String input = "Vagabonding";
+        lib.checkout(input);
+        String successfulCheckoutMessage = "That book is not available.";
         assertThat(myOut.toString(), containsString(successfulCheckoutMessage));
     }
 }

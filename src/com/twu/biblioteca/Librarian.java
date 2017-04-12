@@ -24,12 +24,21 @@ public class Librarian {
     }
 
     void checkout(String bookTitle) {
-        for(Book book : bookList) {
-            if(book.getTitle().equals(bookTitle)) {
-                book.switchCheckedOutStatus();
-                System.out.println("Checkout successful - enjoy!");
-                break;
+            if(checkForBook(bookTitle)) {
+                for(Book book : bookList) {
+                    book.switchCheckedOutStatus();
+                    System.out.println("Thank you! Enjoy the book");
+                    break;
+                }
+            } else {
+                System.out.println("That book is not available.");
             }
         }
+
+    boolean checkForBook(String title) {
+        for(Book book : bookList) {
+            if(book.getTitle().equals(title)) { return true; }
+        }
+        return false;
     }
 }
