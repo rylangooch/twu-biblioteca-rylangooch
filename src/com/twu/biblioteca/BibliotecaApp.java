@@ -5,18 +5,18 @@ import java.util.Scanner;
 public class BibliotecaApp {
 
     private boolean userIsQuitting = false;
-    private Librarian lib;
+    private Library lib;
 
-    BibliotecaApp(Librarian bookManager) {
+    BibliotecaApp(Library bookManager) {
         lib = bookManager;
     }
 
     BibliotecaApp() {
-        lib = new Librarian();
+        lib = new Library();
     }
 
     public static void main(String[] args) {
-        Librarian lib = new Librarian();
+        Library lib = new Library();
         BibliotecaApp app = new BibliotecaApp(lib);
         app.welcomeMessage();
         app.start();

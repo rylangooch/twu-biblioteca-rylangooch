@@ -6,11 +6,11 @@ import java.util.ArrayList;
  * Created by rylangooch on 12/04/2017.
  */
 
-public class Librarian {
+public class Library {
 
     private ArrayList<Book> bookList = new ArrayList<Book>();
 
-    Librarian() {
+    Library() {
         bookList.add(new Book("Zero To One", "Peter Thiel", "2014"));
         bookList.add(new Book("Mastery", "Robert Greene", "2012"));
     }

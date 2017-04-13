@@ -12,9 +12,9 @@ import static org.junit.Assert.assertThat;
 import static org.hamcrest.CoreMatchers.containsString;
 import static org.hamcrest.CoreMatchers.not;
 
-public class LibrarianTest {
+public class LibraryTest {
 
-    private Librarian lib = new Librarian();
+    private Library lib = new Library();
     private final ByteArrayOutputStream myOut = new ByteArrayOutputStream();
 
     @Before
