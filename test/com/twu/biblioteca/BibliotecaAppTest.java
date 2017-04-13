@@ -4,8 +4,6 @@ import org.junit.Test;
 import org.junit.Before;
 import static org.junit.Assert.assertEquals;
 import java.io.*;
-import static org.junit.Assert.assertThat;
-import static org.hamcrest.CoreMatchers.containsString;
 
 public class BibliotecaAppTest {
 
@@ -20,67 +18,7 @@ public class BibliotecaAppTest {
     @Test
     public void welcomeMessageTest() {
         app.welcomeMessage();
-        app.showMenu();
-        String welcome = "Welcome to The Bangalore Public Library\nMain Menu - Choose a number:\n1. List Books\n" +
-                "2. Checkout Book\n3. Return Book\n4. Exit\n";
+        String welcome = "Welcome to The Bangalore Public Library\n";
         assertEquals(welcome, myOut.toString());
-    }
-
-    @Test
-    public void showMenuTest() {
-        app.showMenu();
-        String welcome = "Main Menu - Choose a number:\n1. List Books\n2. Checkout Book\n3. Return Book\n" +
-                "4. Exit\n";
-        assertEquals(welcome, myOut.toString());
-    }
-
-    @Test
-    public void getMenuChoiceTest() {
-        String input = "1";
-        InputStream myOut = new ByteArrayInputStream(input.getBytes());
-        System.setIn(myOut);
-        assertEquals("1", app.getUserInput());
-    }
-
-    @Test
-    public void selectMenuChoice1Test() {
-        String input = "1";
-        String booksList = "Zero To One | Peter Thiel | 2014\nMastery | Robert Greene | 2012\n";
-        app.selectMenuChoice(input);
-        assertEquals(booksList, myOut.toString());
-    }
-
-    @Test
-    public void selectInvalidMenuOptionTest() {
-        String input = "List books";
-        String errorMessage = "Select a valid option!\n";
-        app.selectMenuChoice(input);
-        assertEquals(errorMessage, myOut.toString());
-    }
-
-    @Test
-    public void selectMenuChoice2Test() {
-        String input = "2";
-        String checkoutMessage = "Please provide the title of the book you'd like to checkout:\n";
-        System.setIn(new ByteArrayInputStream(input.getBytes()));
-        app.selectMenuChoice(input);
-        assertThat(myOut.toString(), containsString(checkoutMessage));
-    }
-
-    @Test
-    public void selectMenuChoice3Test() {
-        String input = "3";
-        String exitMessage = "Please provide the title of the book you'd like to return:\n";
-        System.setIn(new ByteArrayInputStream(input.getBytes()));
-        app.selectMenuChoice(input);
-        assertThat(myOut.toString(), containsString(exitMessage));
-    }
-
-    @Test
-    public void selectMenuChoice4Test() {
-        String input = "4";
-        String exitMessage = "Thank you for visiting The Bangalore Public Library. Goodbye.\n";
-        app.selectMenuChoice(input);
-        assertEquals(exitMessage, myOut.toString());
     }
 }
