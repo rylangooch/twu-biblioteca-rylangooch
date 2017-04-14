@@ -28,6 +28,11 @@ public class BookTest {
     }
 
     @Test
+    public void printDetailsTest() {
+        assertEquals("Zero To One | Peter Thiel | 2014", book1.printDetails());
+    }
+
+    @Test
     public void hasACheckedOutStatusTest() {
         assertEquals(true, book1.getAvailability());
     }

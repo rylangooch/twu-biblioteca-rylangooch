@@ -11,5 +11,9 @@ public class Book extends LibraryItem {
         this.author = author;
     }
 
+    String printDetails() {
+        return getTitle() + " | " + getAuthor() + " | " + getYear();
+    }
+
     String getAuthor() { return author; }
 }

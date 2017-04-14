@@ -13,6 +13,10 @@ public class Movie extends LibraryItem {
         this.rating = rating;
     }
 
+    String printDetails() {
+        return getTitle() + " | " + getDirector() + " | " + getYear() + " | " + getRating();
+    }
+
     String getDirector() { return director; }
 
     String getRating() {

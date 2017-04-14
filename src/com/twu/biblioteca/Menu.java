@@ -31,7 +31,10 @@ public class Menu {
                 "1. List Books\n" +
                 "2. Checkout Book\n" +
                 "3. Return Book\n" +
-                "4. Exit");
+                "4. List Movies\n" +
+                "5. Checkout Movie\n" +
+                "6. Return Movie\n" +
+                "7. Exit");
     }
 
     String getUserInput() {
@@ -47,6 +50,12 @@ public class Menu {
         } else if(input.equals("3")) {
             bookReturn();
         } else if(input.equals("4")) {
+            lib.listMovies();
+        } else if(input.equals("5")) {
+            checkoutMovie();
+        } else if(input.equals("6")) {
+            movieReturn();
+        } else if(input.equals("7")) {
             userExit();
         } else {
             System.out.println("Select a valid option!");
@@ -62,7 +71,19 @@ public class Menu {
     private void bookReturn() {
         System.out.println("Please provide the title of the book you'd like to return:");
         String bookTitle = getUserInput();
-        lib.returnBook(bookTitle);
+        lib.returnItem(bookTitle);
+    }
+
+    private void checkoutMovie() {
+        System.out.println("Please provide the name of the movie you'd like to checkout:");
+        String movieName = getUserInput();
+        lib.checkout(movieName);
+    }
+
+    private void movieReturn() {
+        System.out.println("Please provide the name of the movie you'd like to return:");
+        String movieName = getUserInput();
+        lib.returnItem(movieName);
     }
 
     private void userExit () {

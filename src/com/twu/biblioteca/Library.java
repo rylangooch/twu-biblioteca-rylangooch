@@ -8,17 +8,27 @@ import java.util.ArrayList;
 
 public class Library {
 
-    private ArrayList<Book> bookList = new ArrayList<Book>();
+    private ArrayList<LibraryItem> itemList = new ArrayList<LibraryItem>();
 
     Library() {
-        bookList.add(new Book("Zero To One", "Peter Thiel", "2014"));
-        bookList.add(new Book("Mastery", "Robert Greene", "2012"));
+        itemList.add(new Book("Zero To One", "Peter Thiel", "2014"));
+        itemList.add(new Book("Mastery", "Robert Greene", "2012"));
+        itemList.add(new Movie("Django Unchained", "Quentin Tarantino", "2012", "7"));
+        itemList.add(new Movie("Manchester By The Sea", "Kenneth Lonergan", "2016", "8"));
     }
 
     void listBooks() {
-        for(Book book : bookList) {
-            if(book.getAvailability()) {
-                System.out.println(book.getTitle() + " | " + book.getAuthor() + " | " + book.getYear());
+        for(LibraryItem item : itemList) {
+            if(item.getAvailability() && item instanceof Book) {
+                System.out.println(item.printDetails());
+            }
+        }
+    }
+
+    void listMovies() {
+        for(LibraryItem item : itemList) {
+            if(item.getAvailability() && item instanceof Movie) {
+                System.out.println(item.printDetails());
             }
         }
     }
@@ -26,24 +36,24 @@ public class Library {
     void checkout(String bookTitle) {
             if(isProcessable(bookTitle, true)) {
                 processBook(bookTitle, true);
-                System.out.println("Thank you! Enjoy the book");
+                System.out.println("Thank you! Enjoy the item.");
             } else {
-                System.out.println("That book is not available.");
+                System.out.println("That item is not available.");
             }
         }
 
-    void returnBook(String bookTitle) {
+    void returnItem(String bookTitle) {
         if(isProcessable(bookTitle, false)) {
             processBook(bookTitle, false);
-            System.out.println("Thank you for returning the book.");
+            System.out.println("Thank you for returning the item.");
         } else {
-            System.out.println("That is not a valid book to return.");
+            System.out.println("That is not a valid item to return.");
         }
     }
 
     private boolean isProcessable(String bookTitle, boolean isForCheckout) {
-        for(Book book : bookList) {
-            if(areTitlesMatching(book, bookTitle) && areCheckoutStatusesMatching(book, isForCheckout)) {
+        for(LibraryItem item : itemList) {
+            if(areTitlesMatching(item, bookTitle) && areCheckoutStatusesMatching(item, isForCheckout)) {
                 return true;
             }
         }
@@ -51,19 +61,19 @@ public class Library {
     }
 
     private void processBook(String bookName, boolean isForCheckout) {
-        for(Book book : bookList) {
-            if(areTitlesMatching(book, bookName) && areCheckoutStatusesMatching(book, isForCheckout)) {
-                book.switchAvailability();
+        for(LibraryItem item : itemList) {
+            if(areTitlesMatching(item, bookName) && areCheckoutStatusesMatching(item, isForCheckout)) {
+                item.switchAvailability();
                 break;
             }
         }
     }
 
-    private boolean areTitlesMatching(Book book, String title) {
-        return book.getTitle().equals(title);
+    private boolean areTitlesMatching(LibraryItem item, String title) {
+        return item.getTitle().equals(title);
     }
 
-    private boolean areCheckoutStatusesMatching(Book book, boolean forCheckout) {
-        return book.getAvailability() == forCheckout;
+    private boolean areCheckoutStatusesMatching(LibraryItem item, boolean forCheckout) {
+        return item.getAvailability() == forCheckout;
     }
 }

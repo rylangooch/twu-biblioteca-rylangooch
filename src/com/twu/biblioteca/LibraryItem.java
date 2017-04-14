@@ -14,6 +14,8 @@ public abstract class LibraryItem {
         this.isAvailable = true;
     }
 
+    abstract String printDetails();
+
     String getTitle() {
         return title;
     }

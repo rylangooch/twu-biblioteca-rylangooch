@@ -32,6 +32,11 @@ public class MovieTest {
     }
 
     @Test
+    public void printDetailsTest() {
+        assertEquals("Manchester By The Sea | Kenneth Lonergan | 2016 | 8", movie1.printDetails());
+    }
+
+    @Test
     public void hasACheckedOutStatusTest() {
         assertEquals(true, movie1.getAvailability());
     }

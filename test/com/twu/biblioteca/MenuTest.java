@@ -29,7 +29,7 @@ public class MenuTest {
     public void showMenuTest() {
         menu.showMenu();
         String welcome = "Main Menu - Choose a number:\n1. List Books\n2. Checkout Book\n3. Return Book\n" +
-                "4. Exit\n";
+                "4. List Movies\n5. Checkout Movie\n6. Return Movie\n7. Exit\n";
         assertEquals(welcome, myOut.toString());
     }
 
@@ -78,9 +78,35 @@ public class MenuTest {
     @Test
     public void selectMenuChoice4Test() {
         String input = "4";
+        String moviesList = "Django Unchained | Quentin Tarantino | 2012 | 7\n" +
+                "Manchester By The Sea | Kenneth Lonergan | 2016 | 8\n";
+        menu.selectMenuChoice(input);
+        assertEquals(moviesList, myOut.toString());
+    }
+
+    @Test
+    public void selectMenuChoice5Test() {
+        String input = "5";
+        String checkoutMessage = "Please provide the name of the movie you'd like to checkout:\n";
+        System.setIn(new ByteArrayInputStream(input.getBytes()));
+        menu.selectMenuChoice(input);
+        assertThat(myOut.toString(), containsString(checkoutMessage));
+    }
+
+    @Test
+    public void selectMenuChoice6Test() {
+        String input = "6";
+        String exitMessage = "Please provide the name of the movie you'd like to return:\n";
+        System.setIn(new ByteArrayInputStream(input.getBytes()));
+        menu.selectMenuChoice(input);
+        assertThat(myOut.toString(), containsString(exitMessage));
+    }
+
+    @Test
+    public void selectMenuChoice7Test() {
+        String input = "7";
         String exitMessage = "Thank you for visiting The Bangalore Public Library. Goodbye.\n";
         menu.selectMenuChoice(input);
         assertEquals(exitMessage, myOut.toString());
     }
-
 }
