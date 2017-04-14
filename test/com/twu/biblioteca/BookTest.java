@@ -24,17 +24,17 @@ public class BookTest {
 
     @Test
     public void hasAYearPublishedTest() {
-        assertEquals("2014", book1.getYearPublished());
+        assertEquals("2014", book1.getYear());
     }
 
     @Test
     public void hasACheckedOutStatusTest() {
-        assertEquals(true, book1.getCheckedOutStatus());
+        assertEquals(true, book1.getAvailability());
     }
 
     @Test
     public void switchCheckedOutStatusTest() {
-        book1.switchCheckedOutStatus();
-        assertEquals(false, book1.getCheckedOutStatus());
+        book1.switchAvailability();
+        assertEquals(false, book1.getAvailability());
     }
 }

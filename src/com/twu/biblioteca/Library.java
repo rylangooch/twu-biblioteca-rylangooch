@@ -17,8 +17,8 @@ public class Library {
 
     void listBooks() {
         for(Book book : bookList) {
-            if(book.getCheckedOutStatus()) {
-                System.out.println(book.getTitle() + " | " + book.getAuthor() + " | " + book.getYearPublished());
+            if(book.getAvailability()) {
+                System.out.println(book.getTitle() + " | " + book.getAuthor() + " | " + book.getYear());
             }
         }
     }
@@ -53,7 +53,7 @@ public class Library {
     private void processBook(String bookName, boolean isForCheckout) {
         for(Book book : bookList) {
             if(areTitlesMatching(book, bookName) && areCheckoutStatusesMatching(book, isForCheckout)) {
-                book.switchCheckedOutStatus();
+                book.switchAvailability();
                 break;
             }
         }
@@ -64,6 +64,6 @@ public class Library {
     }
 
     private boolean areCheckoutStatusesMatching(Book book, boolean forCheckout) {
-        return book.getCheckedOutStatus() == forCheckout;
+        return book.getAvailability() == forCheckout;
     }
 }

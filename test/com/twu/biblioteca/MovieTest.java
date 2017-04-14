@@ -9,12 +9,11 @@ import static org.junit.Assert.assertEquals;
  */
 public class MovieTest {
 
-
     Movie movie1 = new Movie("Manchester By The Sea", "Kenneth Lonergan", "2016", "8");
 
     @Test
     public void hasANameTest() {
-        assertEquals("Manchester By The Sea", movie1.getName());
+        assertEquals("Manchester By The Sea", movie1.getTitle());
     }
 
     @Test
@@ -24,7 +23,7 @@ public class MovieTest {
 
     @Test
     public void hasAYearReleasedTest() {
-        assertEquals("2016", movie1.getYearReleased());
+        assertEquals("2016", movie1.getYear());
     }
 
     @Test
@@ -34,12 +33,12 @@ public class MovieTest {
 
     @Test
     public void hasACheckedOutStatusTest() {
-        assertEquals(true, movie1.getCheckedOutStatus());
+        assertEquals(true, movie1.getAvailability());
     }
 
     @Test
     public void switchCheckedOutStatusTest() {
-        movie1.switchCheckedOutStatus();
-        assertEquals(false, movie1.getCheckedOutStatus());
+        movie1.switchAvailability();
+        assertEquals(false, movie1.getAvailability());
     }
 }
