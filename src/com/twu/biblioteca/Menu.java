@@ -9,13 +9,17 @@ public class Menu {
     
     private boolean userIsQuitting = false;
     private Library lib;
+    private User currentUser = null;
+    private UserDatabase userDatabase;
 
-    Menu(Library bookManager) {
+    Menu(Library bookManager, UserDatabase database) {
         this.lib = bookManager;
+        this.userDatabase = database;
     }
 
     Menu() {
         this.lib = new Library();
+        this.userDatabase = new UserDatabase();
     }
 
     void start() {
@@ -28,13 +32,14 @@ public class Menu {
 
     void showMenu() {
         System.out.println("Main Menu - Choose a number:\n" +
-                "1. List Books\n" +
-                "2. Checkout Book\n" +
-                "3. Return Book\n" +
-                "4. List Movies\n" +
-                "5. Checkout Movie\n" +
-                "6. Return Movie\n" +
-                "7. Exit");
+                "1. Login\n" +
+                "2. List Books\n" +
+                "3. Checkout Book\n" +
+                "4. Return Book\n" +
+                "5. List Movies\n" +
+                "6. Checkout Movie\n" +
+                "7. Return Movie\n" +
+                "8. Exit");
     }
 
     String getUserInput() {
@@ -44,21 +49,56 @@ public class Menu {
 
     void selectMenuChoice(String input) {
         if(input.equals("1")) {
-            lib.listBooks();
+            login();
         } else if(input.equals("2")) {
-            checkoutBook();
+            lib.listBooks();
         } else if(input.equals("3")) {
-            bookReturn();
+            startCheckout();
         } else if(input.equals("4")) {
-            lib.listMovies();
+            startReturn();
         } else if(input.equals("5")) {
-            checkoutMovie();
+            lib.listMovies();
         } else if(input.equals("6")) {
-            movieReturn();
+            checkoutMovie();
         } else if(input.equals("7")) {
+            movieReturn();
+        } else if(input.equals("8")) {
             userExit();
         } else {
             System.out.println("Select a valid option!");
+        }
+    }
+
+    private void startCheckout() {
+        if(currentUser != null) {
+            checkoutBook();
+        } else {
+            System.out.println("You must login to checkout an item.");
+        }
+    }
+
+    private void startReturn() {
+        if(currentUser != null) {
+            returnBook();
+        } else {
+            System.out.println("You must login to return an item.");
+        }
+    }
+
+    private void login() {
+        System.out.println("What is your Library Number (XXX-XXXX):");
+        String userLibraryNumber = getUserInput();
+        System.out.println("What is your password:");
+        String userPassword = getUserInput();
+        checkUserCredentials(userLibraryNumber, userPassword);
+    }
+
+    private void checkUserCredentials(String number, String pass) {
+        currentUser = userDatabase.checkUserDetails(number, pass);
+        if(currentUser == null) {
+            System.out.println("Please provide valid Library Number and Password");
+        } else {
+            System.out.println("Login successful");
         }
     }
 
@@ -68,7 +108,7 @@ public class Menu {
         lib.checkout(bookTitle);
     }
 
-    private void bookReturn() {
+    private void returnBook() {
         System.out.println("Please provide the title of the book you'd like to return:");
         String bookTitle = getUserInput();
         lib.returnItem(bookTitle);

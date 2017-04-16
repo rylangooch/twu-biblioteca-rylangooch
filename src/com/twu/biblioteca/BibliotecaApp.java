@@ -4,7 +4,8 @@ public class BibliotecaApp {
 
     public static void main(String[] args) {
         Library lib = new Library();
-        Menu menu = new Menu(lib);
+        UserDatabase userDatabase = new UserDatabase();
+        Menu menu = new Menu(lib, userDatabase);
         BibliotecaApp app = new BibliotecaApp();
         app.welcomeMessage();
         menu.start();
