@@ -16,4 +16,23 @@ public class UserTest {
         assertEquals("Rylan | rylan@biblioteca.com | 07482388920", user1.getInformation());
     }
 
+    @Test
+    public void successfulcheckUsernameTest() {
+        assertEquals(true, user1.checkLibraryNumber("409-2983"));
+    }
+
+    @Test
+    public void unsuccessfulCheckUsernameTest() {
+        assertEquals(false, user1.checkLibraryNumber("111-1111"));
+    }
+
+    @Test
+    public void successfulCheckPasswordTest() {
+        assertEquals(true, user1.checkPassword("riberty4"));
+    }
+
+    @Test
+    public void unsuccessfulCheckPasswordTest() {
+        assertEquals(false, user1.checkPassword("1111"));
+    }
 }

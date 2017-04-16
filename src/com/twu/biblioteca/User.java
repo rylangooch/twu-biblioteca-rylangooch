@@ -21,4 +21,12 @@ public class User {
     String getInformation() {
         return this.name + " | " + this.email + " | " + this.telephone;
     }
+
+    boolean checkLibraryNumber(String number) {
+        return number.equals(this.libraryNumber);
+    }
+
+    boolean checkPassword(String pass) {
+        return pass.equals(this.password);
+    }
 }
