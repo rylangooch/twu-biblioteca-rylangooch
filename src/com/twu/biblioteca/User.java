@@ -10,12 +10,12 @@ public class User {
     private String libraryNumber;
     private String password;
 
-    public User(String name, String email, String telephone, String libraryNumber, String password) {
-        this.name = name;
-        this.email = email;
-        this.telephone = telephone;
-        this.libraryNumber = libraryNumber;
-        this.password = password;
+    public User(String n, String e, String t, String ln, String p) {
+        this.name = n;
+        this.email = e;
+        this.telephone = t;
+        this.libraryNumber = ln;
+        this.password = p;
     }
 
     public String getInformation() {

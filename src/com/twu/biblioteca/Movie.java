@@ -7,10 +7,10 @@ public class Movie extends LibraryItem {
     private String director;
     private String rating;
 
-    public Movie(String title, String director, String year, String rating) {
-        super(title, year);
-        this.director = director;
-        this.rating = rating;
+    public Movie(String t, String d, String y, String r) {
+        super(t, y);
+        this.director = d;
+        this.rating = r;
     }
 
     public String printDetails() {

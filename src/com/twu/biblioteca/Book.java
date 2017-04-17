@@ -6,9 +6,9 @@ package com.twu.biblioteca;
 public class Book extends LibraryItem {
     private String author;
 
-    public Book(String title, String author, String year) {
-        super(title, year);
-        this.author = author;
+    public Book(String t, String a, String y) {
+        super(t, y);
+        this.author = a;
     }
 
     public String printDetails() {
