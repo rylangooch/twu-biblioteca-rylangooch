@@ -39,7 +39,8 @@ public class Menu {
                 "5. List Movies\n" +
                 "6. Checkout Movie\n" +
                 "7. Return Movie\n" +
-                "8. Exit");
+                "8. Show User Information\n" +
+                "9. Exit");
     }
 
     String getUserInput() {
@@ -63,6 +64,8 @@ public class Menu {
         } else if(input.equals("7")) {
             movieReturn();
         } else if(input.equals("8")) {
+            getUserDetails();
+        }else if(input.equals("9")) {
             userExit();
         } else {
             System.out.println("Select a valid option!");
@@ -70,7 +73,7 @@ public class Menu {
     }
 
     private void startCheckout() {
-        if(currentUser != null) {
+        if(checkForUser()) {
             checkoutBook();
         } else {
             System.out.println("You must login to checkout an item.");
@@ -78,7 +81,7 @@ public class Menu {
     }
 
     private void startReturn() {
-        if(currentUser != null) {
+        if(checkForUser()) {
             returnBook();
         } else {
             System.out.println("You must login to return an item.");
@@ -95,7 +98,7 @@ public class Menu {
 
     private void checkUserCredentials(String number, String pass) {
         currentUser = userDatabase.checkUserDetails(number, pass);
-        if(currentUser == null) {
+        if(checkForUser()) {
             System.out.println("Please provide valid Library Number and Password");
         } else {
             System.out.println("Login successful");
@@ -126,8 +129,20 @@ public class Menu {
         lib.returnItem(movieName);
     }
 
+    private void getUserDetails() {
+        if(checkForUser()) {
+            System.out.println(currentUser.getInformation());
+        } else {
+            System.out.println("Please login.");
+        }
+    }
+
     private void userExit () {
         userIsQuitting = true;
         System.out.println("Thank you for visiting The Bangalore Public Library. Goodbye.");
+    }
+
+    private boolean checkForUser() {
+        return currentUser != null;
     }
 }

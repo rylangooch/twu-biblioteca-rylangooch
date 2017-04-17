@@ -29,7 +29,7 @@ public class MenuTest {
     public void showMenuTest() {
         menu.showMenu();
         String welcome = "Main Menu - Choose a number:\n1. Login\n2. List Books\n3. Checkout Book\n4. Return Book\n" +
-                "5. List Movies\n6. Checkout Movie\n7. Return Movie\n8. Exit\n";
+                "5. List Movies\n6. Checkout Movie\n7. Return Movie\n8. Show User Information\n9. Exit\n";
         assertEquals(welcome, myOut.toString());
     }
 
@@ -104,8 +104,8 @@ public class MenuTest {
     }
 
     @Test
-    public void selectMenuChoice8Test() {
-        String input = "8";
+    public void selectMenuChoice9Test() {
+        String input = "9";
         String exitMessage = "Thank you for visiting The Bangalore Public Library. Goodbye.\n";
         menu.selectMenuChoice(input);
         assertEquals(exitMessage, myOut.toString());
