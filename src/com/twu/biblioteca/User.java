@@ -10,7 +10,7 @@ public class User {
     private String libraryNumber;
     private String password;
 
-    User(String name, String email, String telephone, String libraryNumber, String password) {
+    public User(String name, String email, String telephone, String libraryNumber, String password) {
         this.name = name;
         this.email = email;
         this.telephone = telephone;
@@ -18,15 +18,15 @@ public class User {
         this.password = password;
     }
 
-    String getInformation() {
+    public String getInformation() {
         return this.name + " | " + this.email + " | " + this.telephone;
     }
 
-    boolean checkLibraryNumber(String number) {
+    public boolean checkLibraryNumber(String number) {
         return number.equals(this.libraryNumber);
     }
 
-    boolean checkPassword(String pass) {
+    public boolean checkPassword(String pass) {
         return pass.equals(this.password);
     }
 }

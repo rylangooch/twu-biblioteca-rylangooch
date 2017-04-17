@@ -12,17 +12,17 @@ public class Menu {
     private User currentUser = null;
     private UserDatabase userDatabase;
 
-    Menu(Library bookManager, UserDatabase database) {
+    public Menu(Library bookManager, UserDatabase database) {
         this.lib = bookManager;
         this.userDatabase = database;
     }
 
-    Menu() {
+    public Menu() {
         this.lib = new Library();
         this.userDatabase = new UserDatabase();
     }
 
-    void start() {
+    public void start() {
         while(!userIsQuitting) {
             showMenu();
             String menuChoice = getUserInput();
@@ -30,7 +30,7 @@ public class Menu {
         }
     }
 
-    void showMenu() {
+    public void showMenu() {
         System.out.println("Main Menu - Choose a number:\n" +
                 "1. Login\n" +
                 "2. List Books\n" +
@@ -43,12 +43,12 @@ public class Menu {
                 "9. Exit");
     }
 
-    String getUserInput() {
+    public String getUserInput() {
         Scanner sc = new Scanner(System.in);
         return sc.nextLine();
     }
 
-    void selectMenuChoice(String input) {
+    public void selectMenuChoice(String input) {
         if(input.equals("1")) {
             login();
         } else if(input.equals("2")) {

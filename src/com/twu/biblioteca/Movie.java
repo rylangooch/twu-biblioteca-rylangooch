@@ -7,19 +7,19 @@ public class Movie extends LibraryItem {
     private String director;
     private String rating;
 
-    Movie(String title, String director, String year, String rating) {
+    public Movie(String title, String director, String year, String rating) {
         super(title, year);
         this.director = director;
         this.rating = rating;
     }
 
-    String printDetails() {
+    public String printDetails() {
         return getTitle() + " | " + getDirector() + " | " + getYear() + " | " + getRating();
     }
 
-    String getDirector() { return director; }
+    public String getDirector() { return director; }
 
-    String getRating() {
+    public String getRating() {
         return rating;
     }
 }

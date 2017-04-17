@@ -11,7 +11,7 @@ public class BibliotecaApp {
         menu.start();
     }
 
-    void welcomeMessage() {
+    public void welcomeMessage() {
         System.out.println("Welcome to The Bangalore Public Library");
     }
  }

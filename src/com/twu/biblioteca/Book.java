@@ -6,14 +6,14 @@ package com.twu.biblioteca;
 public class Book extends LibraryItem {
     private String author;
 
-    Book(String title, String author, String year) {
+    public Book(String title, String author, String year) {
         super(title, year);
         this.author = author;
     }
 
-    String printDetails() {
+    public String printDetails() {
         return getTitle() + " | " + getAuthor() + " | " + getYear();
     }
 
-    String getAuthor() { return author; }
+    public String getAuthor() { return author; }
 }

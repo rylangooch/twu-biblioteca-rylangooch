@@ -8,27 +8,27 @@ public abstract class LibraryItem {
     private String year;
     private boolean isAvailable;
 
-    LibraryItem(String title, String year) {
+    public LibraryItem(String title, String year) {
         this.title = title;
         this.year = year;
         this.isAvailable = true;
     }
 
-    abstract String printDetails();
+    public abstract String printDetails();
 
-    String getTitle() {
+    public String getTitle() {
         return title;
     }
 
-    String getYear() {
+    public String getYear() {
         return year;
     }
 
-    boolean getAvailability() {
+    public boolean getAvailability() {
         return isAvailable;
     }
 
-    void switchAvailability() {
+    public void switchAvailability() {
         this.isAvailable ^= true;
     }
 }

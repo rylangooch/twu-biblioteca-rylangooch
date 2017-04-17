@@ -10,7 +10,7 @@ import java.util.ArrayList;
 public class UserDatabase {
     private ArrayList<User> DB = new ArrayList<User>();
 
-    UserDatabase() {
+    public UserDatabase() {
         DB.add(new User("Rylan", "rylan@biblioteca.com", "07958463521", "409-2983", "riberty4"));
         DB.add(new User("Tefe", "tefe@biblioteca.com", "07847553622", "408-2983", "placer990"));
     }

@@ -10,14 +10,14 @@ public class Library {
 
     private ArrayList<LibraryItem> itemList = new ArrayList<LibraryItem>();
 
-    Library() {
+    public Library() {
         itemList.add(new Book("Zero To One", "Peter Thiel", "2014"));
         itemList.add(new Book("Mastery", "Robert Greene", "2012"));
         itemList.add(new Movie("Django Unchained", "Quentin Tarantino", "2012", "7"));
         itemList.add(new Movie("Manchester By The Sea", "Kenneth Lonergan", "2016", "8"));
     }
 
-    void listBooks() {
+    public void listBooks() {
         for(LibraryItem item : itemList) {
             if(item.getAvailability() && item instanceof Book) {
                 System.out.println(item.printDetails());
@@ -25,7 +25,7 @@ public class Library {
         }
     }
 
-    void listMovies() {
+    public void listMovies() {
         for(LibraryItem item : itemList) {
             if(item.getAvailability() && item instanceof Movie) {
                 System.out.println(item.printDetails());
@@ -33,7 +33,7 @@ public class Library {
         }
     }
 
-    void checkout(String bookTitle) {
+    public void checkout(String bookTitle) {
             if(isProcessable(bookTitle, true)) {
                 processBook(bookTitle, true);
                 System.out.println("Thank you! Enjoy the item.");
@@ -42,7 +42,7 @@ public class Library {
             }
         }
 
-    void returnItem(String bookTitle) {
+    public void returnItem(String bookTitle) {
         if(isProcessable(bookTitle, false)) {
             processBook(bookTitle, false);
             System.out.println("Thank you for returning the item.");
